@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h1>Student Registration</h1>
+                <p>Please fill in all the required fields below</p>
+            </div>
+
+            <form id="registrationForm" novalidate>
+                <!-- Personal Information Section -->
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="firstName" 
+                            name="firstName" 
+                            placeholder="John"
+                            required
+                        >
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="lastName" 
+                            name="lastName" 
+                            placeholder="Doe"
+                            required
+                        >
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="john.doe@example.com"
+                            required
+                        >
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            placeholder="(123) 456-7890"
+                            required
+                        >
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dob">Date of Birth <span class="required">*</span></label>
+                        <input 
+                            type="date" 
+                            id="dob" 
+                            name="dob" 
+                            required
+                        >
+                        <span class="error-message"></span>
+                    </div>
+                </fieldset>
+
+                <!-- Academic Information Section -->
+                <fieldset>
+                    <legend>Academic Information</legend>
+
+                    <div class="form-group">
+                        <label for="studentId">Student ID <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="studentId" 
+                            name="studentId" 
+                            placeholder="STU-2024-001"
+                            required
+                        >
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="program">Program of Study <span class="required">*</span></label>
+                        <select id="program" name="program" required>
+                            <option value="">-- Select a Program --</option>
+                            <option value="cs">Computer Science</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="business">Business Administration</option>
+                            <option value="medicine">Medicine</option>
+                            <option value="arts">Liberal Arts</option>
+                            <option value="law">Law</option>
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="level">Academic Level <span class="required">*</span></label>
+                        <select id="level" name="level" required>
+                            <option value="">-- Select a Level --</option>
+                            <option value="freshman">Freshman</option>
+                            <option value="sophomore">Sophomore</option>
+                            <option value="junior">Junior</option>
+                            <option value="senior">Senior</option>
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gpa">Expected GPA <span class="required">*</span></label>
+                        <input 
+                            type="number" 
+                            id="gpa" 
+                            name="gpa" 
+                            placeholder="3.5"
+                            min="0"
+                            max="4"
+                            step="0.01"
+                            required
+                        >
+                        <span class="error-message"></span>
+                    </div>
+                </fieldset>
+
+                <!-- Address Information Section -->
+                <fieldset>
+                    <legend>Address Information</legend>
+
+                    <div class="form-group">
+                        <label for="address">Street Address <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="address" 
+                            name="address" 
+                            placeholder="123 Main Street"
+                            required
+                        >
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City <span class="required">*</span></label>
+                            <input 
+                                type="text" 
+                                id="city" 
+                                name="city" 
+                                placeholder="New York"
+                                required
+                            >
+                            <span class="error-message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state">State <span class="required">*</span></label>
+                            <input 
+                                type="text" 
+                                id="state" 
+                                name="state" 
+                                placeholder="NY"
+                                required
+                            >
+                            <span class="error-message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="zip">Zip Code <span class="required">*</span></label>
+                            <input 
+                                type="text" 
+                                id="zip" 
+                                name="zip" 
+                                placeholder="10001"
+                                required
+                            >
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Additional Information Section -->
+                <fieldset>
+                    <legend>Additional Information</legend>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" name="newsletter" id="newsletter">
+                            Subscribe to our newsletter
+                        </label>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" name="terms" id="terms" required>
+                            I agree to the terms and conditions <span class="required">*</span>
+                        </label>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments">Additional Comments</label>
+                        <textarea 
+                            id="comments" 
+                            name="comments" 
+                            placeholder="Any additional information you'd like to share..."
+                            rows="4"
+                        ></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="reset" class="btn-reset">Clear Form</button>
+                    <button type="submit" class="btn-submit">Register Now</button>
+                </div>
+            </form>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message hidden">
+                <div class="success-content">
+                    <h2>✓ Registration Successful!</h2>
+                    <p>Thank you for registering. We've sent a confirmation email to your address.</p>
+                    <button type="button" onclick="location.reload()" class="btn-submit">Register Another Student</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

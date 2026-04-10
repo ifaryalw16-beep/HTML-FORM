@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Form</title>
+    <style>
+        /*FLEXBOX FOR LAYOUT:
+        Centering the form on the page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0%;
+            background-color: #f0fdf9;
+font-family: Arial, Helvetica, sans-serif;
+        }
+        form {
+            width: 400px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;/*keeps the header corners rounded*/
+        }
+        .header{
+            background-color:rgb(203, 253, 237);
+            padding: 15px;
+            text-align: center;
+        }
+        .form-content {
+            padding: 25px;
+        }
+        /* 1. PADDING INSIDE INPUTS: Making them easier to type in */
+        input[type="text"], 
+        input[type="email"], 
+        input[type="password"] {
+            width: 100%;
+            padding: 12px; /* Space inside the box */
+            box-sizing: border-box; /* Ensures padding doesn't push the box wider than 100% */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* 2. MARGIN BETWEEN FIELDS: Giving labels and inputs breathing room */
+        label {
+            display: inline-block;
+            margin-top: 15px; /* Space above each label */
+            margin-bottom: 5px; /* Space between label and its input */
+            color: #333;
+            font-weight: bold;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgb(198, 225, 223);
+            border: 1px solid #999;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .submit-btn:hover {
+            background-color: #a8dadc;
+        }
+
+        /* Styling for the Radio/Checkbox sections */
+        .section-title {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div class="header" style="background-color: rgb(203, 253, 237); padding: 5px;">
+        <h2 style="text-align: center;color: rgb(68, 68, 68);">Student Registration Form</h2>
+        </div>
+        <div class="form-content" style="border-radius: 5px;background-color: rgba(239, 244, 243, 0.962);padding: 20px;margin-top: 10px; box-shadow: 200px;">
+        <label for="fname">First Name:</label><br>
+        <input type="text" id="fname" name="fname" placeholder="First Name"><br>
+        <label for="lname">Last Name:</label><br>
+        <input type="text" id="lname" name="lname" placeholder="Last Name"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="Email"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" placeholder="Password"><br>
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city" placeholder="City"><br>
+       
+<p class="section title">Gender:</p>
+<input type="radio" id="Gender-male" name="gender" value="male">
+<label for="Gender-male" style="font-weight: normal;margin-top: 0%;">Male</label><br>
+<input type="radio" id="Gender-female" name="gender" value="female">
+<label for="Gender-female" style="font-weight: normal;margin-top: 0%;">Female</label><br>
+<input type="radio" id="Gender-other" name="gender" value="other">
+<label for="Gender-other" style="font-weight: normal;margin-top: 0%;">Other</label><br>
+<p class="section title">Hobbies:</p>
+<input type="checkbox" id="hobby1" style="font-weight: normal; margin-top: 0%;" name="hobbies" value="reading">
+<label for="hobby1">Reading</label><br>
+<input type="checkbox" id="hobby2" style="font-weight: normal;margin-top: 0%;" name="hobbies" value="sports">
+<label for="hobby2">Sports</label><br>
+<input type="checkbox" id="hobby3" style="font-weight: normal;margin-top: 0%;" name="hobbies" value="music">
+<label for="hobby3">Music</label><br>
+<input type="checkbox" id="hobby4" style="font-weight: normal;margin-top: 0%;" name="hobbies" value="traveling">
+<label for="hobby4">Coding</label><br>
+        <button type="button" style="margin: 10px;background-color: rgb(198, 225, 223);" class="submit-btn">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

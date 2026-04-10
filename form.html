@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+    .card-header .logo {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 16px;
+    }
+
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 680px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: linear-gradient(135deg, #0a1628, #1a3a5c);
+      padding: 36px 40px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .card-header .icon {
+      width: 64px; height: 64px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 28px;
+    }
+
+    .card-header h1 { font-size: 1.75rem; font-weight: 700; }
+    .card-header p  { font-size: 0.9rem; opacity: 0.85; margin-top: 6px; }
+
+    .card-body { padding: 40px; }
+
+    .section-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #8b1a1a;
+      margin: 28px 0 16px;
+    }
+    .section-title:first-child { margin-top: 0; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #f0f0f5;
+      margin: 28px 0;
+    }
+
+    .row { display: flex; gap: 20px; }
+    .row .field { flex: 1; }
+
+    .field { margin-bottom: 20px; }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    label span.req { color: #ef4444; margin-left: 2px; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: #111827;
+      background: #fafafa;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #1a3a5c;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(26,58,92,0.1);
+    }
+
+    input::placeholder, textarea::placeholder { color: #9ca3af; }
+
+    select { appearance: none; cursor: pointer; }
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 14px; top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      pointer-events: none;
+    }
+
+    textarea { resize: vertical; min-height: 90px; }
+
+    .radio-group, .checkbox-group {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+
+    .radio-group label, .checkbox-group label {
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 16px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #374151;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .radio-group input[type="radio"],
+    .checkbox-group input[type="checkbox"] {
+      width: auto; accent-color: #1a3a5c;
+    }
+
+    .radio-group label:has(input:checked),
+    .checkbox-group label:has(input:checked) {
+      border-color: #1a3a5c;
+      background: #eef2f7;
+      color: #0a1628;
+      font-weight: 500;
+    }
+
+    .file-input-wrap {
+      border: 2px dashed #d1d5db;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      background: #fafafa;
+    }
+    .file-input-wrap:hover { border-color: #1a3a5c; background: #eef2f7; }
+    .file-input-wrap input { display: none; }
+    .file-input-wrap p { font-size: 0.85rem; color: #6b7280; margin-top: 6px; }
+    .file-input-wrap .upload-icon { font-size: 28px; }
+
+    .terms {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.83rem; color: #6b7280;
+    }
+    .terms input { width: auto; margin-top: 2px; accent-color: #1a3a5c; }
+    .terms a { color: #8b1a1a; text-decoration: none; font-weight: 500; }
+    .terms a:hover { text-decoration: underline; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #0a1628, #1a3a5c);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 28px;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 6px 20px rgba(10,22,40,0.35);
+    }
+    .btn-submit:hover  { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 10px 28px rgba(10,22,40,0.4); }
+    .btn-submit:active { transform: translateY(0); }
+
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+    .login-link a { color: #8b1a1a; font-weight: 500; text-decoration: none; }
+    .login-link a:hover { text-decoration: underline; }
+
+    @media (max-width: 520px) {
+      .card-body { padding: 28px 20px; }
+      .row { flex-direction: column; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-header">
+    <img class="logo" src="https://tse2.mm.bing.net/th/id/OIP.FtAcYq-mdIMihxjX47S8MgHaHa?w=1000&h=1000&rs=1&pid=ImgDetMain&o=7&rm=3" alt="University Logo" />
+    <h1>Student Registration</h1>
+    <p>Fill in the details below to create your student account</p>
+  </div>
+
+  <div class="card-body">
+    <form id="registrationForm" novalidate>
+
+      <!-- Personal Information -->
+      <p class="section-title">Personal Information</p>
+
+      <div class="row">
+        <div class="field">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" placeholder="Faryal" required />
+        </div>
+        <div class="field">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" placeholder="Waseem" required />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Date of Birth <span class="req">*</span></label>
+          <input type="date" required />
+        </div>
+        <div class="field">
+          <label>Gender <span class="req">*</span></label>
+          <div class="radio-group">
+            <label><input type="radio" name="gender" value="male" /> Male</label>
+            <label><input type="radio" name="gender" value="female" /> Female</label>
+            <label><input type="radio" name="gender" value="other" /> Other</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>National ID / Passport Number <span class="req">*</span></label>
+        <input type="text" placeholder="e.g. A12345678" required />
+      </div>
+
+      <hr class="divider"/>
+
+      <!-- Contact Details -->
+      <p class="section-title">Contact Details</p>
+
+      <div class="field">
+        <label>Email Address <span class="req">*</span></label>
+        <input type="email" placeholder="john.doe@example.com" required />
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Phone Number <span class="req">*</span></label>
+          <input type="tel" placeholder="+1 (555) 000-0000" required />
+        </div>
+        <div class="field">
+          <label>Country <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select required>
+              <option value="" disabled selected>Select country</option>
+              <option>United States</option>
+              <option>United Kingdom</option>
+              <option>Canada</option>
+              <option>Australia</option>
+              <option>Germany</option>
+              <option>France</option>
+              <option>India</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Home Address</label>
+        <textarea placeholder="Street, City, State, ZIP"></textarea>
+      </div>
+
+      <hr class="divider"/>
+
+      <!-- Academic Information -->
+      <p class="section-title">Academic Information</p>
+
+      <div class="row">
+        <div class="field">
+          <label>Program / Degree <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select required>
+              <option value="" disabled selected>Select program</option>
+              <option>Bachelor of Science</option>
+              <option>Bachelor of Arts</option>
+              <option>Master of Science</option>
+              <option>Master of Arts</option>
+              <option>Doctor of Philosophy</option>
+              <option>Associate Degree</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Field of Study <span class="req">*</span></label>
+          <input type="text" placeholder="e.g. Computer Science" required />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Academic Year <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select required>
+              <option value="" disabled selected>Select year</option>
+              <option>1st Year</option>
+              <option>2nd Year</option>
+              <option>3rd Year</option>
+              <option>4th Year</option>
+              <option>5th Year</option>
+              <option>Graduate</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Enrollment Type</label>
+          <div class="radio-group">
+            <label><input type="radio" name="enrollment" value="full" checked /> Full-time</label>
+            <label><input type="radio" name="enrollment" value="part" /> Part-time</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Subjects of Interest</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" /> Mathematics</label>
+          <label><input type="checkbox" /> Physics</label>
+          <label><input type="checkbox" /> Chemistry</label>
+          <label><input type="checkbox" /> Biology</label>
+          <label><input type="checkbox" /> Computer Science</label>
+          <label><input type="checkbox" /> Literature</label>
+          <label><input type="checkbox" /> History</label>
+          <label><input type="checkbox" /> Economics</label>
+        </div>
+      </div>
+
+      <hr class="divider"/>
+
+      <!-- Account Setup -->
+      <p class="section-title">Account Setup</p>
+
+      <div class="field">
+        <label>Username <span class="req">*</span></label>
+        <input type="text" placeholder="johndoe123" required />
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Password <span class="req">*</span></label>
+          <input type="password" placeholder="Min. 8 characters" required />
+        </div>
+        <div class="field">
+          <label>Confirm Password <span class="req">*</span></label>
+          <input type="password" placeholder="Repeat password" required />
+        </div>
+      </div>
+
+      <hr class="divider"/>
+
+      <!-- Documents -->
+      <p class="section-title">Upload Documents</p>
+
+      <div class="field">
+        <label>Profile Photo</label>
+        <label class="file-input-wrap">
+          <input type="file" accept="image/*" />
+          <div class="upload-icon">📷</div>
+          <strong>Click to upload</strong>
+          <p>PNG, JPG up to 5 MB</p>
+        </label>
+      </div>
+
+      <div class="field">
+        <label>Academic Transcript</label>
+        <label class="file-input-wrap">
+          <input type="file" accept=".pdf,.doc,.docx" />
+          <div class="upload-icon">📄</div>
+          <strong>Click to upload</strong>
+          <p>PDF or DOC up to 10 MB</p>
+        </label>
+      </div>
+
+      <hr class="divider"/>
+
+      <!-- Terms -->
+      <div class="field">
+        <label class="terms">
+          <input type="checkbox" required />
+          I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-submit">Create Student Account</button>
+
+      <p class="login-link">Already have an account? <a href="#">Sign in</a></p>
+
+    </form>
+  </div>
+</div>
+
+<script>
+  document.getElementById('registrationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Registration submitted successfully! 🎉');
+  });
+
+  // File input label update
+  document.querySelectorAll('.file-input-wrap input[type="file"]').forEach(input => {
+    input.addEventListener('change', function() {
+      const label = this.closest('.file-input-wrap');
+      const strong = label.querySelector('strong');
+      if (this.files.length) strong.textContent = this.files[0].name;
+    });
+  });
+</script>
+
+</body>
+</html>
